@@ -35,15 +35,65 @@ void randomLocation(char *location)
         *(location + i) = *(*(locations + randLocationNumber) + i);      //fill the passed array with the location
 }
 
+///returns integer with the date
+void randomDate(char *date)
+{
+    int randMonth, randDay, randYear;
+
+    randMonth = rand() % 13;
+    if(randMonth == 2)
+        randDay = rand() % 29;
+    else
+        randDay = rand() % 31;
+    randYear = (rand() % 21);
+
+    if(randMonth < 10)
+    {
+        *(date + 0) = '0';
+        *(date + 1) = (char)(48 + randMonth);
+    }
+    else
+    {
+        *(date + 0) = '1';
+        *(date + 1) = (char)(48 + (randMonth % 10));
+    }
+
+    if(randDay < 10)
+    {
+        *(date + 2) = '0';
+        *(date + 3) = (char)(48 + randDay);
+    }
+    else
+    {
+        *(date + 2) = (char)(48 + (randDay / 10));
+        *(date + 3) = (char)(48 + (randMonth % 10));
+    }
+
+    if(randYear < 10)
+    {
+        *(date + 4) = '0';
+        *(date + 5) = (char)(48 + randYear);
+    }
+    else
+    {
+        *(date + 4) = (char)(48 + (randYear / 10));
+        *(date + 5) = (char)(48 + (randMonth % 10));
+    } 
+    *(date + 6) = '\0';
+}
+
 int main()
 {
     
     FILE *recordPtr;    //the pointer to the record.txt file
     char location[9];   //array that will hold the location
-    char *ptrLocation;  //the pointed to the array with the location
+    char *ptrLocation;  //the pointer to the array with the location
+    char date[7];       //array that will hold the date
+    char *ptrDate;      //the pointer to array with the date
 
     recordPtr = fopen("Record.txt", "w");   //initialize pointer for the output file
     ptrLocation = location;                 //initialize pointer for the array with location
+    ptrDate = date;                         //initialize pointer for the array with date
 
     if(recordPtr != NULL)
     {
@@ -53,6 +103,8 @@ int main()
             fprintf(recordPtr, "%d\n", randomAmount(0, 2000));      //print random amount
             randomLocation(ptrLocation);                            //fill location with random location
             fprintf(recordPtr, "%s\n", location);                   //print the random location
+            randomDate(ptrDate);                                    //fill date with random date
+            fprintf(recordPtr, "%s\n", date);                       //print the random date
         }      
     }
     else
