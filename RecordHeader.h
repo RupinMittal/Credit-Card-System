@@ -12,6 +12,6 @@ void randomLocation(char *location);
 void randomDate(char *date);
 
 //functions in RecordGetter
-void getRecord();
+//void getRecord();
 
 #endif

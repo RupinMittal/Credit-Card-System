@@ -5,6 +5,7 @@
 #include <stdio.h>
 
 #define NUM_TRANSACTIONS 30
+#define MAX_TRANSACTIONS 100                    //maximum of 100 transactions can be held
 
 struct transaction   //the struct that will represent the transactions
 {

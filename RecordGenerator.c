@@ -11,41 +11,33 @@
 #include "RecordHeader.h"
 #include "CreditCardSystem.h"
 
-//function declarations
-int randomAmount(int lower, int higher);
-void randomLocation(char *location);
-void randomDate(char *date);
+struct transaction record[MAX_TRANSACTIONS];    //define the arary of structs of transactions
 
 ///method to generate the record into the Record.txt file
 void generateRecord()
 {
-    FILE *recordPtr;    //the pointer to the record.txt file
-    char location[9];   //array that will hold the location
-    char *ptrLocation;  //the pointer to the array with the location
-    char date[7];       //array that will hold the date
-    char *ptrDate;      //the pointer to array with the date
+    int localAmount;         //int to hold the local copy of amount
+    char localLocation[9];   //array that will hold the location
+    char *ptrLocation;       //the pointer to the array with the location
+    char localDate[7];       //array that will hold the date
+    char *ptrDate;           //the pointer to array with the date
 
-    recordPtr = fopen("Record.txt", "w");   //initialize pointer for the output file
-    ptrLocation = location;                 //initialize pointer for the array with location
-    ptrDate = date;                         //initialize pointer for the array with date
+    ptrLocation = localLocation;                 //initialize pointer for the array with location
+    ptrDate = localDate;                         //initialize pointer for the array with date
 
-    if(recordPtr != NULL)
+    srand(time(0));             //set the seed based on the time since Jan 1, 1970 (Unix timestamp)
+    for(int i = 0; i < NUM_TRANSACTIONS; i++)
     {
-        srand(time(0));             //set the seed based on the time since Jan 1, 1970 (Unix timestamp)
-        for(int i = 0; i < NUM_TRANSACTIONS; i++)
-        {
-            fprintf(recordPtr, "%d\n", randomAmount(0, 2000));      //print random amount
-            randomLocation(ptrLocation);                            //fill location with random location
-            fprintf(recordPtr, "%s\n", location);                   //print the random location
-            randomDate(ptrDate);                                    //fill date with random date
-            fprintf(recordPtr, "%s\n", date);                       //print the random date
-        }      
+        localAmount = randomAmount(0, 2000);                   //get random amount
+        randomLocation(ptrLocation);                            //fill location with random location
+        randomDate(ptrDate);                                    //fill date with random date
+
+        record[i].amount = localAmount;                         //put amount into struct into array
+        for(int k = 0; k < 9; k++)
+            record[i].location[k] = localLocation[k];           //load struct with the location
+        for(int k = 0; k < 7; k++)
+                record[i].date[k] = localDate[k];               //load struct with the location
     }
-    else
-    {
-        printf("Could not write to file\n");
-    }
-    fclose(recordPtr);
 }
 
 ///Returns a random amount between $lower - $higher 
