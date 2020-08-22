@@ -35,3 +35,16 @@ void printRecordToFile()
     }
     fclose(recordPtr);              //close the file
 }
+
+//prints the record out to the system
+void printRecordToSystem()
+{
+    printf("                 Amount       Date   Location\n");
+    for(int i = 0; i < numTransactions; i++)
+    {
+       printf("Transaction %2d:", (i + 1));
+       printf("  $%5d", record[i].amount);                 //print amount to file
+       printf("%11s", record[i].date);                     //print amount to file
+       printf("%11s\n", record[i].location);               //print amount to file
+    }
+}

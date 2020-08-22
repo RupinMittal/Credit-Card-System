@@ -13,5 +13,6 @@ void randomDate(char *date);
 
 //functions in RecordPrinter
 void printRecordToFile();
+void printRecordToSystem();
 
 #endif

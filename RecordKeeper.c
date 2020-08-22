@@ -17,7 +17,7 @@ int main()
 {
     generateRecord();
     printRecordToFile();
-    printf("This is proof it works -->%d\n", record[0].amount);
+    printRecordToSystem();
 
     return 0;
 }
