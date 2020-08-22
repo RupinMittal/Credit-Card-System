@@ -19,14 +19,14 @@ void generateRecord()
     int localAmount;         //int to hold the local copy of amount
     char localLocation[9];   //array that will hold the location
     char *ptrLocation;       //the pointer to the array with the location
-    char localDate[7];       //array that will hold the date
+    char localDate[9];       //array that will hold the date
     char *ptrDate;           //the pointer to array with the date
 
     ptrLocation = localLocation;                 //initialize pointer for the array with location
     ptrDate = localDate;                         //initialize pointer for the array with date
 
     srand(time(0));             //set the seed based on the time since Jan 1, 1970 (Unix timestamp)
-    for(int i = 0; i < NUM_TRANSACTIONS; i++)
+    for(int i = 0; i < NUM_GENTRANSACTIONS; i++)
     {
         localAmount = randomAmount(0, 2000);                   //get random amount
         randomLocation(ptrLocation);                            //fill location with random location
@@ -35,7 +35,7 @@ void generateRecord()
         record[i].amount = localAmount;                         //put amount into struct into array
         for(int k = 0; k < 9; k++)
             record[i].location[k] = localLocation[k];           //load struct with the location
-        for(int k = 0; k < 7; k++)
+        for(int k = 0; k < 9; k++)
                 record[i].date[k] = localDate[k];               //load struct with the location
     }
 }
@@ -89,26 +89,30 @@ void randomDate(char *date)
         *(date + 1) = (char)(48 + (randMonth % 10));
     }
 
+    *(date + 2) = '/';
+
     if(randDay < 10)                                    //if less than 10, enter as 0_ (still has to be d)
     {
-        *(date + 2) = '0';
-        *(date + 3) = (char)(48 + randDay);
+        *(date + 3) = '0';
+        *(date + 4) = (char)(48 + randDay);
     }
     else                                                //otherwise enter it normally
     {
-        *(date + 2) = (char)(48 + (randDay / 10));
-        *(date + 3) = (char)(48 + (randDay % 10));
+        *(date + 3) = (char)(48 + (randDay / 10));
+        *(date + 4) = (char)(48 + (randDay % 10));
     }
+
+    *(date + 5) = '/';
 
     if(randYear < 10)                                  //if less than 10, enter as 0_ (still has to be yy)
     {
-        *(date + 4) = '0';
-        *(date + 5) = (char)(48 + randYear);
+        *(date + 6) = '0';
+        *(date + 7) = (char)(48 + randYear);
     }
     else                                                //otherwise enter it normally
     {
-        *(date + 4) = (char)(48 + (randYear / 10));
-        *(date + 5) = (char)(48 + (randYear % 10));
+        *(date + 6) = (char)(48 + (randYear / 10));
+        *(date + 7) = (char)(48 + (randYear % 10));
     } 
-    *(date + 6) = '\0';                                 //last char in char[] should be '\0'
+    *(date + 8) = '\0';                                 //last char in char[] should be '\0'
 }

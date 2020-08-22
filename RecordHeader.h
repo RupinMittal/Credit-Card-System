@@ -11,7 +11,7 @@ int randomAmount(int lower, int higher);
 void randomLocation(char *location);
 void randomDate(char *date);
 
-//functions in RecordGetter
-//void getRecord();
+//functions in RecordPrinter
+void printRecordToFile();
 
 #endif
