@@ -8,6 +8,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
+#include "RecordHeader.h"
+#include "CreditCardSystem.h"
 
 //function declarations
 int randomAmount(int lower, int higher);
@@ -30,7 +32,7 @@ void generateRecord()
     if(recordPtr != NULL)
     {
         srand(time(0));             //set the seed based on the time since Jan 1, 1970 (Unix timestamp)
-        for(int i = 0; i < 20; i++)
+        for(int i = 0; i < NUM_TRANSACTIONS; i++)
         {
             fprintf(recordPtr, "%d\n", randomAmount(0, 2000));      //print random amount
             randomLocation(ptrLocation);                            //fill location with random location
@@ -44,8 +46,6 @@ void generateRecord()
         printf("Could not write to file\n");
     }
     fclose(recordPtr);
-
-    return 0;
 }
 
 ///Returns a random amount between $lower - $higher 

@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#define NUM_TRANSACTIONS 30
+
 struct transaction   //the struct that will represent the transactions
 {
     int amount;
