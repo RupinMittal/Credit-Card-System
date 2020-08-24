@@ -13,7 +13,9 @@
 
 int numTransactions = NUM_GENTRANSACTIONS;     //the initial number of transactions
 
+//function declarations
 void printMenu();
+void addTransaction();;
 
 int main()
 {
@@ -48,7 +50,7 @@ int main()
                 //sortAmountLowest();
                 break;
             case 7:
-                //addTransaction();
+                addTransaction();
                 break;
             case 8:
                 break;
@@ -71,4 +73,30 @@ void printMenu()
     printf("Press 7 to --> Add a transaction\n");
     printf("Press 8 to --> Leave the program\n");
     printf("***************************************************************\n\n");
+    printf("Enter your choice here --> ");
+}
+
+//function to add a user-added Transaction to the record
+void addTransaction()
+{
+    int userAmount;         //the amount the user enters 
+    char userDate[9];       //the date the user enters
+    char userLocation[9];   //the location that the user enters
+
+    printf("\nPlease enter the transaction amount --> ");
+    scanf("%d", &userAmount);
+    printf("Please enter the date in mm/dd/yy format --> ");
+    scanf("%s", userDate);
+    printf("Please enter the first 9 nine letters of the location --> ");
+    scanf("%s", userLocation);
+
+    record[numTransactions].amount = userAmount;                         //put amount into struct into array
+    for(int k = 0; k < 9; k++)
+        record[numTransactions].location[k] = userLocation[k];           //load struct with the location
+    for(int k = 0; k < 9; k++)
+            record[numTransactions].date[k] = userDate[k];               //load struct with the location
+        
+    numTransactions++;      //inrement the number of transactions
+
+    printf("Your transaction has been recorded\n");
 }

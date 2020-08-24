@@ -34,11 +34,13 @@ void printRecordToFile()
         printf("Could not write to file");         //if we could not find the file pointer
     }
     fclose(recordPtr);              //close the file
+    printf("Your record has been printed to the Read.txt file\n");
 }
 
 //prints the record out to the system
 void printRecordToSystem()
 {
+    printf("Your record has been printed below:\n");
     printf("\n*************************************************\n");
     printf("                 Amount       Date   Location\n");
     for(int i = 0; i < numTransactions; i++)
