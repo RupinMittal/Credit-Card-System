@@ -17,10 +17,43 @@ void printMenu();
 
 int main()
 {
-    generateRecord();
-    printRecordToFile();
-    printRecordToSystem();
-    printMenu();
+    int option;             //the user's option
+    generateRecord();       //generate the initial record
+
+    option = 0;             //initially, while loop is run at least once
+
+    while(option != 8)      //runs the loop for the program
+    {
+        printMenu();
+        scanf("%d", &option);
+
+        switch(option)
+        {
+            case 1:
+                printRecordToSystem();
+                break;
+            case 2:
+                printRecordToFile();
+                break;
+            case 3:
+                //sortDateNewest();
+                break;
+            case 4:
+                //sortDateOldest();
+                break;
+            case 5:
+                //sortAmountHighest();
+                break;
+            case 6:
+                //sortAmountLowest();
+                break;
+            case 7:
+                //addTransaction();
+                break;
+            case 8:
+                break;
+        }
+    }
 
     return 0;
 }
