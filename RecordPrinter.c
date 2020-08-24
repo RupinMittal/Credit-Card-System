@@ -1,6 +1,6 @@
 /**
  * \class RecordPrinter.c
- * This class prints the list of Transactions
+ * This class prints the list of Transactions in the format user would like
  * \author $Rupin Mittal $
  * \date $Date: 8/21/20
  */
@@ -39,6 +39,7 @@ void printRecordToFile()
 //prints the record out to the system
 void printRecordToSystem()
 {
+    printf("\n*************************************************\n");
     printf("                 Amount       Date   Location\n");
     for(int i = 0; i < numTransactions; i++)
     {
@@ -47,4 +48,5 @@ void printRecordToSystem()
        printf("%11s", record[i].date);                     //print amount to file
        printf("%11s\n", record[i].location);               //print amount to file
     }
+    printf("\n*************************************************\n");
 }
