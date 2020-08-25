@@ -23,10 +23,22 @@ int partition(int (*fPtr)(int, int, int), int direction, int left, int right);
 ///@param int 1 (old/new and cheap/expensive) -1 (new/old and expensive/cheap)
 void sortRecord(int type, int direction)
 {
-    if(type == 1)
+    if(type == 1)       //sort by date
+    {
         quickSort(compareDate, direction, 0, numTransactions - 1);
-    else
-        quickSort(compareAmount, direction, 0, numTransactions - 1);    
+        if(direction == 1)
+            printf("Your record has been sorted by date from oldest to newest\n");
+        else
+            printf("Your record has been sorted by date from newest to oldest\n"); 
+    }
+    else                //sort by amount
+    {
+        quickSort(compareAmount, direction, 0, numTransactions - 1);  
+        if(direction == 1)
+            printf("Your record has been sorted by amount from lowest to highestt\n");
+        else
+            printf("Your record has been sorted by date from lowest to highest\n"); 
+    }       
 }
 
 ///swap helper function for sorting
@@ -40,22 +52,26 @@ void swap(int index1, int index2)
 }
 
 ///function that finds the Partition index and does the swaps
+///Partitioning finds the pivot, and rearranges the array so elements smaller than the pivot are to the left, and larger are to the left
 int partition(int (*fPtr)(int, int, int), int direction, int left, int right)
 {
     int partitionIndex, pivotIndex;      //the partitionIndex and the index of the pivot
 
-    pivotIndex = right;
-    partitionIndex = left;
+    pivotIndex = right;                 //the pivot will be the last element in the array
+    partitionIndex = left;              //the partitionIndex starts at the start or the array
 
-    for(int i = left; i < right; i++)
+    for(int i = left; i < right; i++)           //for every elemt from the start to right before the index
     {
-        if(fPtr(i, right, direction) > 0)
+        if(fPtr(i, right, direction) < 0)       //if the element is less than the pivot
         {
-            swap(i, partitionIndex);
-            partitionIndex++;
+            swap(i, partitionIndex);            //that element with the element at the partitionIndex
+            partitionIndex++;                   //and increment the partition index
         }
     }
-    swap(partitionIndex, pivotIndex);
+
+    //after all the elements less than the pivot are on the right and the pivot and the greater elements are on the left, put the pivot
+    //in its correct position by swapping it with the partitionIndex and return this position
+    swap(partitionIndex, pivotIndex);           
     return partitionIndex;
 }
 
@@ -66,9 +82,9 @@ void quickSort(int (*fPtr)(int, int, int), int direction, int left, int right)
 {
     int partitionIndex;     //the partition index
 
-    if(left < right)        //if they are still on the correct sides
+    if(left < right)        //sorting needs to happen
     {
-        partitionIndex = partition(fPtr, direction, left, right);    //get the pivot location
+        partitionIndex = partition(fPtr, direction, left, right);    //get the location where the pivot ended up (the position of the element in its correct place)
         quickSort(fPtr, direction, left, partitionIndex - 1);        //recursively sort left side
         quickSort(fPtr, direction, partitionIndex + 1, right);       //recursively sort right side
     }
