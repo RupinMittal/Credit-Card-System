@@ -11,11 +11,11 @@
 #include "RecordHeader.h"
 #include "CreditCardSystem.h"
 
-
+//function declarations
 int compareDate(int firstIndex, int secondIndex, int direction);
 int compareAmount(int firstIndex, int secondIndex, int direction);
 void sorter(int (*fPtr)(int, int, int), int direction);
-
+void swap(int index1, int index2)l
 
 ///function to call the appropriate sorting function based on what the user wants (called in Keeper file)
 ///@param int 1 (date) and 2 (amount)
@@ -26,6 +26,16 @@ void sortRecord(int type, int direction)
         sorter(compareDate, direction);
     else
         sorter(compareAmount, direction);    
+}
+
+///swap helper function for sorting
+void swap(int index1, int index2)
+{
+    struct transaction temp;    //variable that holds one of the structs to be swapped temporarily
+
+    temp = record[index1];              //the actual swap
+    record[index1] = record[index2];
+    record[index2] = temp;
 }
 
 ///function to actually do the sorting
