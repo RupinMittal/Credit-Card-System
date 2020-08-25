@@ -38,16 +38,16 @@ int main()
                 printRecordToFile();
                 break;
             case 3:
-                //sortDateNewest();
+                sortRecord(1, -1);      //by date and new-->old direction
                 break;
             case 4:
-                //sortDateOldest();
+                sortRecord(1, 1);       //by date and old-->new direction
                 break;
             case 5:
-                //sortAmountHighest();
+                sortRecord(2, -1);      //by amount and expensive-->cheap
                 break;
             case 6:
-                //sortAmountLowest();
+                sortRecord(2, 1);       //by amount and cheap-->expensive
                 break;
             case 7:
                 addTransaction();

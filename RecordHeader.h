@@ -15,4 +15,7 @@ void randomDate(char *date);
 void printRecordToFile();
 void printRecordToSystem();
 
+//functions in Sorter
+void sortRecord(int type, int direction);
+
 #endif

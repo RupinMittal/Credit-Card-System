@@ -11,10 +11,35 @@
 #include "RecordHeader.h"
 #include "CreditCardSystem.h"
 
+
+int compareDate(int firstIndex, int secondIndex, int direction);
+int compareAmount(int firstIndex, int secondIndex, int direction);
+void sorter(int (*fPtr)(int, int, int), int direction);
+
+
+///function to call the appropriate sorting function based on what the user wants (called in Keeper file)
+///@param int 1 (date) and 2 (amount)
+///@param int 1 (old/new and cheap/expensive) -1 (new/old and expensive/cheap)
+void sortRecord(int type, int direction)
+{
+    if(type == 1)
+        sorter(compareDate, direction);
+    else
+        sorter(compareAmount, direction);    
+}
+
+///function to actually do the sorting
+///@param (*p)(int, int, int) (the function to use for comparing)
+///@param int the direction (1 (old/new and cheap/expensive) -1 (new/old and expensive/cheap))
+void sorter(int (*fPtr)(int, int, int), int direction)
+{
+    //implement the actual sorting
+}
+
 ///function to find out if transaction at first index is chronologically before or after the second one
 ///@param int direction (1 if you want oldest to newest and -1 if you want newest to oldest)
 ///@return int 1 if firstIndex is newer than secondIndex, -1 if first index is older. if direction param, this is switched
-int sortDate(int firstIndex, int secondIndex, int direction)
+int compareDate(int firstIndex, int secondIndex, int direction)
 {
     int result;                                     //answer being returned
     int year1, month1, day1, year2, month2, day2;   //information for both the dates 
@@ -54,9 +79,9 @@ int sortDate(int firstIndex, int secondIndex, int direction)
 }
 
 ///function to find out if transaction at first index is chronologically before or after the second one
-///@param int direction (1 if you want cheap to expense and -1 if you want expensive to cheap)
+///@param int direction (1 if you want cheap to expensive and -1 if you want expensive to cheap)
 ///@return int 1 if firstIndex is more expensive than secondIndex, -1 if first index is cheaper. if direction param, this is switched
-int sortAmount(int firstIndex, int secondIndex, int direction)
+int compareAmount(int firstIndex, int secondIndex, int direction)
 {
     int result;         //the answer to be return to the user
 
