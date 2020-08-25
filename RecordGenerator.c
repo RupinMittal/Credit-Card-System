@@ -1,6 +1,6 @@
 /**
  * \class RecordGenerator.c
- * This class generates the initial set of Transactions to be stored
+ * This generates the initial set of Transactions to be stored
  * \author $Rupin Mittal $
  * \date $Date: 8/20/20
  */

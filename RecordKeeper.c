@@ -1,6 +1,6 @@
 /**
  * \class RecordKeeper.c
- * This class manages the set of transactions
+ * This manages the set of transactions
  * \author $Rupin Mittal $
  * \date $Date: 8/21/20
  */

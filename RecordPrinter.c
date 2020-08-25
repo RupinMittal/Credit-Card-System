@@ -1,6 +1,6 @@
 /**
  * \class RecordPrinter.c
- * This class prints the list of Transactions in the format user would like
+ * This prints the list of Transactions in the format user would like
  * \author $Rupin Mittal $
  * \date $Date: 8/21/20
  */
