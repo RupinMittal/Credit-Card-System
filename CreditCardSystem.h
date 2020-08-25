@@ -1,3 +1,10 @@
+/**
+ * \class CreditCardSystem.h
+ * Containts the basic elements of the system (like a transaction and the method of storing the transaction)
+ * \author $Rupin Mittal $
+ * \date $Date: 8/20/20
+ */
+
 #ifndef CREDITCARDSYSTEM_H  //guard against infinite loop of includes
 #define CREDITCARDSYSTEM_H
 

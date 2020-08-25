@@ -1,3 +1,10 @@
+/**
+ * \class RecordHeader.c
+ * Containts the methods used to keep track of the record
+ * \author $Rupin Mittal $
+ * \date $Date: 8/20/20
+ */
+
 #ifndef RECORDHEADER_H  //guard against infinite loop of includes
 #define RECORDHEADER_H
 
