@@ -14,8 +14,9 @@
 //function declarations
 int compareDate(int firstIndex, int secondIndex, int direction);
 int compareAmount(int firstIndex, int secondIndex, int direction);
-void sorter(int (*fPtr)(int, int, int), int direction);
-void swap(int index1, int index2)l
+void quickSort(int (*fPtr)(int, int, int), int direction, int left, int right);
+void swap(int index1, int index2);
+int partition(int (*fPtr)(int, int, int), int direction, int left, int right);
 
 ///function to call the appropriate sorting function based on what the user wants (called in Keeper file)
 ///@param int 1 (date) and 2 (amount)
@@ -23,9 +24,9 @@ void swap(int index1, int index2)l
 void sortRecord(int type, int direction)
 {
     if(type == 1)
-        sorter(compareDate, direction);
+        quickSort(compareDate, direction, 0, numTransactions - 1);
     else
-        sorter(compareAmount, direction);    
+        quickSort(compareAmount, direction, 0, numTransactions - 1);    
 }
 
 ///swap helper function for sorting
@@ -38,12 +39,39 @@ void swap(int index1, int index2)
     record[index2] = temp;
 }
 
+///function that finds the Partition index and does the swaps
+int partition(int (*fPtr)(int, int, int), int direction, int left, int right)
+{
+    int partitionIndex, pivotIndex;      //the partitionIndex and the index of the pivot
+
+    pivotIndex = right;
+    partitionIndex = left;
+
+    for(int i = left; i < right; i++)
+    {
+        if(fPtr(i, right, direction) > 0)
+        {
+            swap(i, partitionIndex);
+            partitionIndex++;
+        }
+    }
+    swap(partitionIndex, pivotIndex);
+    return partitionIndex;
+}
+
 ///function to actually do the sorting
 ///@param (*p)(int, int, int) (the function to use for comparing)
 ///@param int the direction (1 (old/new and cheap/expensive) -1 (new/old and expensive/cheap))
-void sorter(int (*fPtr)(int, int, int), int direction)
+void quickSort(int (*fPtr)(int, int, int), int direction, int left, int right)
 {
-    //implement the actual sorting
+    int partitionIndex;     //the partition index
+
+    if(left < right)        //if they are still on the correct sides
+    {
+        partitionIndex = partition(fPtr, direction, left, right);    //get the pivot location
+        quickSort(fPtr, direction, left, partitionIndex - 1);        //recursively sort left side
+        quickSort(fPtr, direction, partitionIndex + 1, right);       //recursively sort right side
+    }
 }
 
 ///function to find out if transaction at first index is chronologically before or after the second one
