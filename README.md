@@ -25,6 +25,13 @@ that allows them to print their record to the screen, or to a Record.txt file, s
 old-->new and new-->old directions), sort by amount (in both low-->high and high-->low directions), 
 add a transaction, or leave the program.
 
+### How to run the progam
+
+1. Make a folder to hold the repository
+2. Clone the project: ```% git clone https://github.com/RupinMittal/Credit-Card-System.git```
+3. Compile the code: ```% gcc RecordKeeper.c RecordGenerator.c RecordSorter.c RecordPrinter.c```
+4. Run the executable: ```% ./a.out```
+
 ### How it works
 
 The Record is an externally declared array since almost every function in the program must access it. It would be 
@@ -99,10 +106,3 @@ Printing to the system would look like this:
 Printing to the Record.txt file would look like this:
 
 ![Image of Priting to the Record.txt file](https://github.com/RupinMittal/Credit-Card-System/blob/master/Images/PrintToFile.png)
-
-### How to run the progam
-
-1. Make a folder to hold the repository
-2. Clone the project: ```% git clone https://github.com/RupinMittal/Credit-Card-System.git```
-3. Compile the code: ```% gcc RecordKeeper.c RecordGenerator.c RecordSorter.c RecordPrinter.c```
-4. Run the executable: ```% ./a.out```
