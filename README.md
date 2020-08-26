@@ -83,18 +83,22 @@ call the necessary functions for that request.
 
 The initial menu that the user sees is this:
 
-//put picture of the menu
+![Image of Menu](https://github.com/RupinMittal/Credit-Card-System/blob/master/Images/Menu.png)
 
 (In no necessary order): The user can then choose to sort the record (in whichever way they like). They could 
 also print to the screen or to the Record.txt file. They could also add a transaction
 
 Adding a transaction would look like this:
 
-//picture of adding a transaction
+![Image of Adding a Transaction](https://github.com/RupinMittal/Credit-Card-System/blob/master/Images/AddTransaction.png)
 
-//printing to the system would look like this
+Printing to the system would look like this:
 
-//And printing to the Record.txt file would look like this:
+![Image of Printing to the System](https://github.com/RupinMittal/Credit-Card-System/blob/master/Images/PrintToScreen.png)
+
+Printing to the Record.txt file would look like this:
+
+![Image of Priting to the Record.txt file](https://github.com/RupinMittal/Credit-Card-System/blob/master/Images/PrintToFile.png)
 
 ### How to run the progam
 
