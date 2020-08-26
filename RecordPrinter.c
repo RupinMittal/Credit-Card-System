@@ -34,7 +34,7 @@ void printRecordToFile()
         printf("Could not write to file");         //if we could not find the file pointer
     }
     fclose(recordPtr);              //close the file
-    printf("Your record has been printed to the Read.txt file\n");
+    printf("Your record has been printed to the Record.txt file\n");
 }
 
 //prints the record out to the system
